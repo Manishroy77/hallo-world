@@ -9,7 +9,7 @@ const members = require('./moderls/personschema');
 
 
 app.get('/',(req,res)=>{
-    res.send('Hallo how can i help you');
+    res.send('Hallo how can i help you , i am very exitment');
 })
 
 app.post('/medam',async(req,res)=>{
@@ -26,7 +26,12 @@ app.post('/medam',async(req,res)=>{
         res.status(500).json({Error: 'internal server error'});
     }
 })
-
+app.get('/data',async(req,res)=>{
+    const data=  await members.find()
+    console.log('data fatched');
+    res.status(200).json(data);
+ })
+ 
 
 app.listen(8000,()=>{
     console.log('server lisning 8000');
